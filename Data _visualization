@@ -1,0 +1,41 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Load dataset
+df = pd.read_csv("data.csv")
+print("\nDataset Loaded Successfully:")
+print(df.head())
+
+# 1. Bar Chart - Category vs Count
+plt.figure(figsize=(8,5))
+df['Category'].value_counts().plot(kind='bar')
+plt.title("Category Distribution")
+plt.xlabel("Category")
+plt.ylabel("Count")
+plt.tight_layout()
+plt.savefig("bar_chart.png")
+plt.close()
+
+# 2. Line Chart - Sales over Time
+plt.figure(figsize=(8,5))
+plt.plot(df['Month'], df['Sales'])
+plt.title("Sales Trend Over Months")
+plt.xlabel("Month")
+plt.ylabel("Sales")
+plt.tight_layout()
+plt.savefig("line_chart.png")
+plt.close()
+
+# 3. Pie Chart - Category Contribution
+plt.figure(figsize=(7,7))
+df['Category'].value_counts().plot(kind='pie', autopct='%1.1f%%')
+plt.title("Category Contribution")
+plt.ylabel("")
+plt.tight_layout()
+plt.savefig("pie_chart.png")
+plt.close()
+
+print("\nVisualization Files Generated Successfully:")
+print("1. bar_chart.png")
+print("2. line_chart.png")
+print("3. pie_chart.png")
